@@ -1,6 +1,6 @@
 #include"Control.h"
 
-daxie::control::Control(
+daxie::control::Control::Control(
 	const daxie::tstring& text, const daxie::tstring& class_name,
 	int width, int height, int x, int y,
 	HWND hwnd_parent, HMENU hmenu, DWORD style, DWORD ex_style) {
@@ -10,7 +10,7 @@ daxie::control::Control(
 		x, y, width, height, hwnd_parent, hmenu, hinstance, NULL);
 	this->hwnd_parent = hwnd_parent;
 }
-daxie::control::~Control() {
+daxie::control::Control::~Control() {
 
 }
 
