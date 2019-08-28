@@ -1,5 +1,6 @@
-#include"./Window.h"
+#include"Window.h"
 #include<windowsx.h>
+#include"WindowTool.h"
 
 HINSTANCE daxie::window::Window::hinstance = NULL;
 daxie::window::Window* daxie::window::Window::p_this = NULL;
@@ -33,7 +34,7 @@ BOOL daxie::window::Window::DHRegisterWindowClass() {
 	if (!RegisterClassEx(&wincx))return FALSE;
 	return TRUE;
 }
-BOOL daxie::window::Window::DHCreateWindow(const daxie::tstring& title, int width, int height, int x, int y,
+BOOL daxie::window::Window::DHCreateWindow(const daxie::tstring& title, int x, int y, int width, int height,
 	HWND hwnd_parent, HMENU hmenu, const daxie::tstring& class_name, DWORD style, DWORD ex_style) {
 	p_this = this;
 
@@ -142,4 +143,14 @@ void daxie::window::Window::onMouseMove(HWND hwnd, int x, int y, UINT key_flags)
 }
 void daxie::window::Window::onMouseWheel(HWND hwnd, int x, int y, int z_delta, UINT fw_keys) {
 
+}
+
+void daxie::window::Window::DHSetWindowText(const daxie::tstring& text) {
+	SetWindowText(hwnd, text.c_str());
+}
+
+daxie::tstring daxie::window::Window::DHGetWindowText() {
+	daxie::tstring text = daxie::tool::WindowTool::GetWindowTextTString(hwnd);
+
+	return text;
 }

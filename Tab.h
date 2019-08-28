@@ -6,7 +6,7 @@ namespace daxie {
 	namespace control {
 		class Tab :public daxie::control::Control {
 		public:
-			Tab(int width, int height, int x, int y, HWND hwnd_parent);
+			Tab(int x, int y, int width, int height, HWND hwnd_parent);
 			virtual ~Tab();
 
 		public:

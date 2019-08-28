@@ -1,8 +1,10 @@
 #include"Control.h"
+#include<memory>
+#include"WindowTool.h"
 
 daxie::control::Control::Control(
 	const daxie::tstring& text, const daxie::tstring& class_name,
-	int width, int height, int x, int y,
+	int x, int y, int width, int height,
 	HWND hwnd_parent, HMENU hmenu, DWORD style, DWORD ex_style) {
 	HINSTANCE hinstance = GetModuleHandle(NULL);
 
@@ -29,6 +31,10 @@ BOOL daxie::control::Control::IsThisControl(HWND hcontrol) {
 void daxie::control::Control::SetControlText(const tstring& text) {
 	SetWindowText(hcontrol, text.c_str());
 }
+void daxie::control::Control::AppendWindowStyle(LONG_PTR style) {
+	LONG_PTR cur_style = GetWindowLongPtr(hcontrol, GWL_STYLE);
+	SetWindowLongPtr(hcontrol, GWL_STYLE, cur_style | style);
+}
 void daxie::control::Control::EnableControl() {
 	EnableWindow(hcontrol, TRUE);
 }
@@ -41,6 +47,12 @@ void daxie::control::Control::ShowControl() {
 void daxie::control::Control::HideControl() {
 	ShowWindow(hcontrol, SW_HIDE);
 }
-void daxie::control::Control::MoveControl(int width, int height, int x, int y) {
+void daxie::control::Control::MoveControl(int x, int y, int width, int height) {
 	MoveWindow(hcontrol, x, y, width, height, TRUE);
+}
+
+daxie::tstring daxie::control::Control::GetControlText() {
+	daxie::tstring text = daxie::tool::WindowTool::GetWindowTextTString(hcontrol);
+
+	return text;
 }

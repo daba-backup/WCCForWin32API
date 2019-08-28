@@ -10,7 +10,7 @@ namespace daxie {
 		private:
 			static HINSTANCE hinstance;
 			HWND hwnd;
-			static Window* p_this;
+			static daxie::window::Window* p_this;
 
 			static const daxie::tstring WINDOW_CLASS_NAME;
 
@@ -20,8 +20,8 @@ namespace daxie {
 
 			static BOOL DHRegisterWindowClass();
 			virtual BOOL DHCreateWindow(
-				const daxie::tstring& title, int width = CW_USEDEFAULT, int height = CW_USEDEFAULT,
-				int x = CW_USEDEFAULT, int y = CW_USEDEFAULT, HWND hwnd_parent = NULL, HMENU hmenu = NULL,
+				const daxie::tstring& title, int x = CW_USEDEFAULT, int y = CW_USEDEFAULT,
+				int width = CW_USEDEFAULT, int height = CW_USEDEFAULT, HWND hwnd_parent = NULL, HMENU hmenu = NULL,
 				const daxie::tstring& class_name = WINDOW_CLASS_NAME,
 				DWORD style = WS_OVERLAPPEDWINDOW | WS_VISIBLE, DWORD ex_style = 0);
 
@@ -48,6 +48,11 @@ namespace daxie {
 			virtual void onMButtonUp(HWND hwnd, int x, int y, UINT key_flags);
 			virtual void onMouseMove(HWND hwnd, int x, int y, UINT key_flags);
 			virtual void onMouseWheel(HWND hwnd, int x, int y, int z_delta, UINT fw_keys);
+
+		public:
+			void DHSetWindowText(const daxie::tstring& text);
+
+			daxie::tstring DHGetWindowText();
 		};
 	}
 }

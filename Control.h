@@ -14,8 +14,8 @@ namespace daxie {
 		public:
 			Control(
 				const daxie::tstring& text, const daxie::tstring& class_name,
-				int width = CW_USEDEFAULT, int height = CW_USEDEFAULT,
-				int x = CW_USEDEFAULT, int y = CW_USEDEFAULT, HWND hwnd_parent = NULL, HMENU hmenu = NULL,
+				int x = CW_USEDEFAULT, int y = CW_USEDEFAULT,
+				int width = CW_USEDEFAULT, int height = CW_USEDEFAULT, HWND hwnd_parent = NULL, HMENU hmenu = NULL,
 				DWORD style = WS_VISIBLE | WS_CHILD, DWORD ex_style = 0);
 			virtual ~Control();
 
@@ -28,11 +28,14 @@ namespace daxie {
 
 		public:
 			void SetControlText(const daxie::tstring& text);
+			void AppendWindowStyle(LONG_PTR style);
 			void EnableControl();
 			void DisableControl();
 			void ShowControl();
 			void HideControl();
-			void MoveControl(int width, int height, int x, int y);
+			void MoveControl(int x, int y, int width, int height);
+
+			daxie::tstring GetControlText();
 		};
 	}
 }

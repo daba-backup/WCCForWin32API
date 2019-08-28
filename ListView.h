@@ -6,7 +6,7 @@ namespace daxie {
 	namespace control {
 		class ListView :public daxie::control::Control {
 		public:
-			ListView(int width, int height, int x, int y, HWND hwnd_parent);
+			ListView(int x, int y, int width, int height, HWND hwnd_parent);
 			virtual ~ListView();
 
 		public:
