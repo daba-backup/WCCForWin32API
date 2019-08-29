@@ -5,7 +5,7 @@
 daxie::control::Control::Control(
 	const daxie::tstring& text, const daxie::tstring& class_name,
 	int x, int y, int width, int height,
-	HWND hwnd_parent, HMENU hmenu, DWORD style, DWORD ex_style) {
+	HWND hwnd_parent, HMENU hmenu, DWORD style, DWORD ex_style):hfont(NULL) {
 	HINSTANCE hinstance = GetModuleHandle(NULL);
 
 	hcontrol = CreateWindowEx(ex_style, class_name.c_str(), text.c_str(), style,
@@ -49,6 +49,21 @@ void daxie::control::Control::HideControl() {
 }
 void daxie::control::Control::MoveControl(int x, int y, int width, int height) {
 	MoveWindow(hcontrol, x, y, width, height, TRUE);
+}
+void daxie::control::Control::SetControlFont(int size, int weight, BOOL italic_flag,
+	BOOL underline_flag, BOOL strike_out_flag, BOOL antialiased_flag, const daxie::tstring& font_name) {
+	if (hfont != NULL) {
+		DeleteObject(hfont);
+	}
+
+	DWORD font_quality;
+	if (antialiased_flag == TRUE)font_quality = ANTIALIASED_QUALITY;
+	else font_quality = DEFAULT_QUALITY;
+
+	hfont = CreateFont(size, 0, 0, 0, weight,
+		italic_flag, underline_flag, strike_out_flag,
+		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, font_quality, DEFAULT_PITCH, font_name.c_str());
+	SendMessage(hcontrol, WM_SETFONT, reinterpret_cast<WPARAM>(hfont), TRUE);
 }
 
 daxie::tstring daxie::control::Control::GetControlText() {

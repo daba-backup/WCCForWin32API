@@ -11,6 +11,8 @@ namespace daxie {
 			HWND hcontrol;
 			HWND hwnd_parent;
 
+			HFONT hfont;
+
 		public:
 			Control(
 				const daxie::tstring& text, const daxie::tstring& class_name,
@@ -34,6 +36,8 @@ namespace daxie {
 			void ShowControl();
 			void HideControl();
 			void MoveControl(int x, int y, int width, int height);
+			void SetControlFont(int size, int weight, BOOL italic_flag,
+				BOOL underline_flag, BOOL strike_out_flag, BOOL antialiased_flag, const daxie::tstring& font_name);
 
 			daxie::tstring GetControlText();
 		};
