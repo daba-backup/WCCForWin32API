@@ -85,15 +85,6 @@ LRESULT CALLBACK daxie::window::Window::WndProc(HWND hwnd, UINT msg, WPARAM wPar
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
-void daxie::window::Window::MsgLoop() {
-	MSG msg;
-
-	while (GetMessage(&msg, NULL, 0, 0) > 0) {
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
-	}
-}
-
 void daxie::window::Window::Idle() {
 
 }

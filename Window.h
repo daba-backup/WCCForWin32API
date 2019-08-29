@@ -30,8 +30,6 @@ namespace daxie {
 			LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 		public:
-			static void MsgLoop();
-
 			virtual void Idle();
 			virtual BOOL onCreate(HWND hwnd, LPCREATESTRUCT cs);
 			virtual void onDestroy(HWND hwnd);

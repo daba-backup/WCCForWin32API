@@ -18,9 +18,7 @@ namespace daxie {
 
 		public:
 			void Add(int index, std::unique_ptr<daxie::menu::Menu>& menu);
-			void Add(int index, std::unique_ptr<daxie::menu::Menu>&& menu);
 			void Add(int index, std::unique_ptr<daxie::menu::MenuItem>& item);
-			void Add(int index, std::unique_ptr<daxie::menu::MenuItem>&& item);
 
 			void UpdateMenuBar();
 		};
