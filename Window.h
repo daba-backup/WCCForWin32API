@@ -49,6 +49,7 @@ namespace daxie {
 
 		public:
 			void DHSetWindowText(const daxie::tstring& text);
+			void CloseWindow();
 
 			daxie::tstring DHGetWindowText();
 		};

@@ -139,6 +139,9 @@ void daxie::window::Window::onMouseWheel(HWND hwnd, int x, int y, int z_delta, U
 void daxie::window::Window::DHSetWindowText(const daxie::tstring& text) {
 	SetWindowText(hwnd, text.c_str());
 }
+void daxie::window::Window::CloseWindow() {
+	SendMessage(hwnd, WM_CLOSE, 0, 0);
+}
 
 daxie::tstring daxie::window::Window::DHGetWindowText() {
 	daxie::tstring text = daxie::tool::WindowTool::GetWindowTextTString(hwnd);
