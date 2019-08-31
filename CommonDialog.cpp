@@ -82,6 +82,10 @@ daxie::dialog::FileChooser::~FileChooser() {
 
 }
 
+OPENFILENAME& daxie::dialog::FileChooser::GetOfn() {
+	return ofn;
+}
+
 void daxie::dialog::FileChooser::SetHwndOwner(HWND hwnd) {
 	ofn.hwndOwner = hwnd;
 }
@@ -101,3 +105,14 @@ BOOL daxie::dialog::FileChooser::ShowSaveDialog() {
 	return ret;
 }
 
+daxie::tstring daxie::dialog::FileChooser::GetSelectedFilename() {
+	daxie::tstring ret;
+
+	ret.clear();
+	int length = lstrlen(&filename[0]);
+	for (int i = 0; i < length; i++) {
+		ret.push_back(filename[i]);
+	}
+
+	return ret;
+}

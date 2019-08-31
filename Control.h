@@ -31,6 +31,7 @@ namespace daxie {
 		public:
 			void SetControlText(const daxie::tstring& text);
 			void AppendWindowStyle(LONG_PTR style);
+			void RemoveWindowStyle(LONG_PTR style);
 			void EnableControl();
 			void DisableControl();
 			void ShowControl();

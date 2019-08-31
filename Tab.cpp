@@ -1,8 +1,9 @@
 #include"Tab.h"
 #include<CommCtrl.h>
 
-daxie::control::Tab::Tab(int x, int y, int width, int height, HWND hwnd_parent)
-	:Control(TEXT(""), WC_TABCONTROL, x, y, width, height, hwnd_parent, NULL, WS_VISIBLE | WS_CHILD | WS_CLIPSIBLINGS, 0) {
+daxie::control::Tab::Tab(int x, int y, int width, int height, HWND hwnd_parent):
+	daxie::control::Control(TEXT(""), WC_TABCONTROL, x, y, width, height, hwnd_parent, 
+		NULL, WS_VISIBLE | WS_CHILD | WS_CLIPSIBLINGS, 0) {
 
 }
 daxie::control::Tab::~Tab() {

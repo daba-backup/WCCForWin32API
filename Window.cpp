@@ -142,6 +142,14 @@ void daxie::window::Window::DHSetWindowText(const daxie::tstring& text) {
 void daxie::window::Window::CloseWindow() {
 	SendMessage(hwnd, WM_CLOSE, 0, 0);
 }
+void daxie::window::Window::AppendWindowStyle(LONG_PTR style) {
+	LONG_PTR cur_style = GetWindowLongPtr(hwnd, GWL_STYLE);
+	SetWindowLongPtr(hwnd, GWL_STYLE, cur_style | style);
+}
+void daxie::window::Window::RemoveWindowStyle(LONG_PTR style) {
+	LONG_PTR cur_style = GetWindowLongPtr(hwnd, GWL_STYLE);
+	SetWindowLongPtr(hwnd, GWL_STYLE, cur_style &~style);
+}
 
 daxie::tstring daxie::window::Window::DHGetWindowText() {
 	daxie::tstring text = daxie::tool::WindowTool::GetWindowTextTString(hwnd);

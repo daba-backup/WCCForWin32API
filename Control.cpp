@@ -35,6 +35,10 @@ void daxie::control::Control::AppendWindowStyle(LONG_PTR style) {
 	LONG_PTR cur_style = GetWindowLongPtr(hcontrol, GWL_STYLE);
 	SetWindowLongPtr(hcontrol, GWL_STYLE, cur_style | style);
 }
+void daxie::control::Control::RemoveWindowStyle(LONG_PTR style) {
+	LONG_PTR cur_style = GetWindowLongPtr(hcontrol, GWL_STYLE);
+	SetWindowLongPtr(hcontrol, GWL_STYLE, cur_style &~style);
+}
 void daxie::control::Control::EnableControl() {
 	EnableWindow(hcontrol, TRUE);
 }

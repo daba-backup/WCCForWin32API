@@ -66,6 +66,9 @@ namespace daxie {
 			FileChooser();
 			virtual ~FileChooser();
 
+		protected:
+			OPENFILENAME & GetOfn();
+
 		public:
 			void SetHwndOwner(HWND hwnd)override;
 			void SetFilter(LPCTSTR filter);
@@ -73,6 +76,8 @@ namespace daxie {
 
 			BOOL ShowOpenDialog();
 			BOOL ShowSaveDialog();
+
+			daxie::tstring GetSelectedFilename();
 		};
 	}
 }

@@ -2,8 +2,9 @@
 #include"TStringFunctions.h"
 #include<CommCtrl.h>
 
-daxie::control::ListView::ListView(int x, int y, int width, int height, HWND hwnd_parent)
-	:Control(TEXT(""), WC_LISTVIEW, x, y, width, height, hwnd_parent, NULL, WS_CHILD | WS_VISIBLE | LVS_REPORT, 0) {
+daxie::control::ListView::ListView(int x, int y, int width, int height, HWND hwnd_parent):
+	daxie::control::Control(TEXT(""), WC_LISTVIEW, x, y, width, height, hwnd_parent, 
+		NULL, WS_CHILD | WS_VISIBLE | LVS_REPORT, 0) {
 
 }
 daxie::control::ListView::~ListView() {

@@ -50,6 +50,8 @@ namespace daxie {
 		public:
 			void DHSetWindowText(const daxie::tstring& text);
 			void CloseWindow();
+			void AppendWindowStyle(LONG_PTR style);
+			void RemoveWindowStyle(LONG_PTR style);
 
 			daxie::tstring DHGetWindowText();
 		};
