@@ -11,6 +11,8 @@ namespace daxie {
 
 		public:
 			void InsertItem(int index, const daxie::tstring& text);
+
+			int GetCurrentSelection();
 		};
 	}
 }
