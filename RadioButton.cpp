@@ -16,6 +16,15 @@ BOOL daxie::control::RadioButtonBase::IsChecked() {
 	else return FALSE;
 }
 
+void daxie::control::RadioButtonBase::Check() {
+	HWND hcontrol = this->GetControlHandle();
+	SendMessage(hcontrol, BM_SETCHECK, BST_CHECKED, 0);
+}
+void daxie::control::RadioButtonBase::Uncheck() {
+	HWND hcontrol = this->GetControlHandle();
+	SendMessage(hcontrol, BM_SETCHECK, BST_UNCHECKED, 0);
+}
+
 daxie::control::HeadRadioButton::HeadRadioButton(const daxie::tstring& text, int x, int y, int width, int height, HWND hwnd_parent)
 	:daxie::control::RadioButtonBase(text, x, y, width, height, hwnd_parent, WS_VISIBLE | WS_CHILD | BS_AUTORADIOBUTTON | WS_GROUP) {
 

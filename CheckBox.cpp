@@ -16,3 +16,12 @@ BOOL daxie::control::CheckBox::IsChecked() {
 	if (ret == BST_CHECKED)return TRUE;
 	else return FALSE;
 }
+
+void daxie::control::CheckBox::Check() {
+	HWND hcontrol = this->GetControlHandle();
+	SendMessage(hcontrol, BM_SETCHECK, BST_CHECKED, 0);
+}
+void daxie::control::CheckBox::Uncheck() {
+	HWND hcontrol = this->GetControlHandle();
+	SendMessage(hcontrol, BM_SETCHECK, BST_UNCHECKED, 0);
+}

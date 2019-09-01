@@ -11,6 +11,9 @@ namespace daxie {
 
 		public:
 			BOOL IsChecked();
+
+			void Check();
+			void Uncheck();
 		};
 
 		class HeadRadioButton :public RadioButtonBase {
