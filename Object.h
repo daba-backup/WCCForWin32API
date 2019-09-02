@@ -15,5 +15,6 @@ namespace daxie {
 
 	public:
 		virtual std::string toString();
+		void SetStr(const std::string& str);
 	};
 }

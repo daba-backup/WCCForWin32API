@@ -14,6 +14,8 @@ namespace daxie {
 
 			static const daxie::tstring WINDOW_CLASS_NAME;
 
+			bool window_destroyed_flag;
+
 		public:
 			Window();
 			virtual ~Window();
@@ -53,6 +55,7 @@ namespace daxie {
 			void RemoveWindowStyle(LONG_PTR style);
 
 			daxie::tstring DHGetWindowText();
+			bool IsDestroyed();
 		};
 	}
 }

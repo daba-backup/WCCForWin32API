@@ -6,7 +6,7 @@ HINSTANCE daxie::window::Window::hinstance = NULL;
 daxie::window::Window* daxie::window::Window::p_this = NULL;
 const daxie::tstring daxie::window::Window::WINDOW_CLASS_NAME = TEXT("WINDOW");
 
-daxie::window::Window::Window() :hwnd(NULL) {
+daxie::window::Window::Window() :hwnd(NULL),window_destroyed_flag(false) {
 
 }
 daxie::window::Window::~Window() {
@@ -39,7 +39,7 @@ BOOL daxie::window::Window::DHCreateWindow(const daxie::tstring& title, int x, i
 	p_this = this;
 
 	hwnd = CreateWindowEx(ex_style, class_name.c_str(), title.c_str(), style,
-		x, y, width, height, hwnd_parent, hmenu, hinstance, NULL);
+		x, y, width, height, hwnd_parent, hmenu, hinstance, this);
 	if (hwnd == NULL)return FALSE;
 	return TRUE;
 }
@@ -90,6 +90,7 @@ BOOL daxie::window::Window::onCreate(HWND hwnd, LPCREATESTRUCT cs) {
 }
 void daxie::window::Window::onDestroy(HWND hwnd) {
 	//PostQuitMessage(0);
+	window_destroyed_flag = true;
 }
 void daxie::window::Window::onPaint(HWND hwnd) {
 	PAINTSTRUCT ps;
@@ -152,4 +153,7 @@ daxie::tstring daxie::window::Window::DHGetWindowText() {
 	daxie::tstring text = daxie::tool::WindowTool::GetWindowTextTString(hwnd);
 
 	return text;
+}
+bool daxie::window::Window::IsDestroyed() {
+	return window_destroyed_flag;
 }
