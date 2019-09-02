@@ -148,6 +148,9 @@ void daxie::window::Window::RemoveWindowStyle(LONG_PTR style) {
 	LONG_PTR cur_style = GetWindowLongPtr(hwnd, GWL_STYLE);
 	SetWindowLongPtr(hwnd, GWL_STYLE, cur_style &~style);
 }
+void daxie::window::Window::DHMoveWindow(int x, int y, int width, int height) {
+	MoveWindow(hwnd, x, y, width, height, TRUE);
+}
 
 daxie::tstring daxie::window::Window::DHGetWindowText() {
 	daxie::tstring text = daxie::tool::WindowTool::GetWindowTextTString(hwnd);
@@ -156,4 +159,14 @@ daxie::tstring daxie::window::Window::DHGetWindowText() {
 }
 bool daxie::window::Window::IsDestroyed() {
 	return window_destroyed_flag;
+}
+POINT daxie::window::Window::GetWindowPos() {
+	RECT rect;
+	POINT pt;
+
+	GetWindowRect(hwnd, &rect);
+	pt.x = rect.left;
+	pt.y = rect.top;
+
+	return pt;
 }

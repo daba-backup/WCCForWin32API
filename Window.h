@@ -53,9 +53,11 @@ namespace daxie {
 			void CloseWindow();
 			void AppendWindowStyle(LONG_PTR style);
 			void RemoveWindowStyle(LONG_PTR style);
+			void DHMoveWindow(int x, int y, int width, int height);
 
 			daxie::tstring DHGetWindowText();
 			bool IsDestroyed();
+			POINT GetWindowPos();
 		};
 	}
 }
