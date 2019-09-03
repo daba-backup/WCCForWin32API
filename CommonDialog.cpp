@@ -95,6 +95,9 @@ void daxie::dialog::FileChooser::SetFilter(LPCTSTR filter) {
 void daxie::dialog::FileChooser::SetFlags(DWORD flags) {
 	ofn.Flags = flags;
 }
+void daxie::dialog::FileChooser::SetDefaultExtension(const daxie::tstring& extension) {
+	ofn.lpstrDefExt = extension.c_str();
+}
 
 BOOL daxie::dialog::FileChooser::ShowOpenDialog() {
 	BOOL ret = GetOpenFileName(&ofn);

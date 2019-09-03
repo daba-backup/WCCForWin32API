@@ -2,6 +2,7 @@
 
 #include"Object.h"
 #include"TString.h"
+#include<vector>
 
 namespace daxie {
 	class TStringFunctions :public Object {
@@ -12,5 +13,7 @@ namespace daxie {
 
 		static daxie::tstring string_to_tstring(const std::string& src);
 		static std::string tstring_to_string(const daxie::tstring& src);
+
+		static std::vector<daxie::tstring> split(const daxie::tstring& str,const daxie::tstring& separator);
 	};
 }

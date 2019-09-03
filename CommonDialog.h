@@ -73,6 +73,7 @@ namespace daxie {
 			void SetHwndOwner(HWND hwnd)override;
 			void SetFilter(LPCTSTR filter);
 			void SetFlags(DWORD flags)override;
+			void SetDefaultExtension(const daxie::tstring& extension);
 
 			BOOL ShowOpenDialog();
 			BOOL ShowSaveDialog();

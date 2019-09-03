@@ -84,3 +84,29 @@ std::string daxie::TStringFunctions::tstring_to_string(const daxie::tstring& src
 
 	return ret;
 }
+
+std::vector<daxie::tstring> daxie::TStringFunctions::split(const daxie::tstring& str,const daxie::tstring& separator) {
+	std::vector<daxie::tstring> ret;
+
+	auto separator_length = separator.length();
+
+	if (separator_length == 0) {
+		ret.push_back(str);
+	}
+	else {
+		auto offset = std::string::size_type(0);
+
+		while (1) {
+			auto pos = str.find(separator, offset);
+			if (pos == std::string::npos) {
+				ret.push_back(str.substr(offset));
+				break;
+			}
+
+			ret.push_back(str.substr(offset, pos - offset));
+			offset = pos + separator_length;
+		}
+	}
+
+	return ret;
+}

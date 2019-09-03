@@ -85,7 +85,12 @@ LRESULT CALLBACK daxie::window::Window::WndProc(HWND hwnd, UINT msg, WPARAM wPar
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
+HWND daxie::window::Window::GetHwnd() {
+	return hwnd;
+}
+
 BOOL daxie::window::Window::onCreate(HWND hwnd, LPCREATESTRUCT cs) {
+	this->hwnd = hwnd;
 	return TRUE;
 }
 void daxie::window::Window::onDestroy(HWND hwnd) {

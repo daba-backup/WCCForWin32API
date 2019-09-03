@@ -31,6 +31,9 @@ namespace daxie {
 			static LRESULT CALLBACK WndProcMgr(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 			LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
+		protected:
+			HWND GetHwnd();
+
 		public:
 			virtual BOOL onCreate(HWND hwnd, LPCREATESTRUCT cs);
 			virtual void onDestroy(HWND hwnd);
