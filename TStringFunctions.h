@@ -15,5 +15,7 @@ namespace daxie {
 		static std::string tstring_to_string(const daxie::tstring& src);
 
 		static std::vector<daxie::tstring> split(const daxie::tstring& str,const daxie::tstring& separator);
+
+		static daxie::tstring get_string_in_between(const daxie::tstring& str, TCHAR c1, TCHAR c2);
 	};
 }

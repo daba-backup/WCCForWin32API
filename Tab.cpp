@@ -18,6 +18,10 @@ void daxie::control::Tab::InsertItem(int index, const daxie::tstring& text) {
 
 	TabCtrl_InsertItem(this->GetControlHandle(), index, &tcitem);
 }
+void daxie::control::Tab::SetCurrentSelection(int index) {
+	HWND hcontrol = this->GetControlHandle();
+	TabCtrl_SetCurSel(hcontrol, index);
+}
 
 int daxie::control::Tab::GetCurrentSelection() {
 	HWND hcontrol = this->GetControlHandle();

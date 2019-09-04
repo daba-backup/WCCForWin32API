@@ -37,6 +37,7 @@ namespace daxie {
 		public:
 			virtual BOOL onCreate(HWND hwnd, LPCREATESTRUCT cs);
 			virtual void onDestroy(HWND hwnd);
+			virtual LRESULT onClose(HWND hwnd);
 			virtual void onPaint(HWND hwnd);
 			virtual void onSize(HWND hwnd, UINT state, int cx, int cy);
 			virtual void onTimer(HWND hwnd, UINT id);
@@ -50,6 +51,7 @@ namespace daxie {
 			virtual void onMButtonUp(HWND hwnd, int x, int y, UINT key_flags);
 			virtual void onMouseMove(HWND hwnd, int x, int y, UINT key_flags);
 			virtual void onMouseWheel(HWND hwnd, int x, int y, int z_delta, UINT fw_keys);
+			virtual void onDropFiles(HWND hwnd, HDROP hdrop);
 
 		public:
 			void DHSetWindowText(const daxie::tstring& text);
@@ -57,10 +59,12 @@ namespace daxie {
 			void AppendWindowStyle(LONG_PTR style);
 			void RemoveWindowStyle(LONG_PTR style);
 			void DHMoveWindow(int x, int y, int width, int height);
+			void DHDragAcceptFiles(bool accept_flag);
 
 			daxie::tstring DHGetWindowText();
 			bool IsDestroyed();
 			POINT GetWindowPos();
+			POINT GetWindowSize();
 		};
 	}
 }

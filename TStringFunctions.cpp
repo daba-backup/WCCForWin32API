@@ -2,7 +2,6 @@
 #include<iomanip>
 #include<sstream>
 #include<string>
-#include<vector>
 
 daxie::tstring daxie::TStringFunctions::to_string(int value) {
 	daxie::tstring ret;
@@ -47,7 +46,7 @@ daxie::tstring daxie::TStringFunctions::string_to_tstring(const std::string& src
 	auto const dst_size = ::MultiByteToWideChar(CP_UTF8, 0U, src.data(), -1, nullptr, 0U);
 	std::vector<wchar_t> dst(dst_size, TEXT('\0'));
 
-	if (::MultiByteToWideChar(CP_UTF8, 0U, src.data(), -1, dst.data(), dst.size()) == 0) {
+	if (::MultiByteToWideChar(CP_UTF8, 0U, src.data(), -1, dst.data(), static_cast<int>(dst.size())) == 0) {
 		throw std::system_error{ static_cast<int>(::GetLastError()),std::system_category() };
 	}
 
@@ -69,7 +68,7 @@ std::string daxie::TStringFunctions::tstring_to_string(const daxie::tstring& src
 	auto const dst_size = ::WideCharToMultiByte(CP_UTF8, 0U, src.data(), -1, nullptr, 0U, nullptr, nullptr);
 	std::vector<char> dst(dst_size, '\0');
 
-	if (::WideCharToMultiByte(CP_UTF8, 0U, src.data(), -1, dst.data(), dst.size(), nullptr, nullptr) == 0) {
+	if (::WideCharToMultiByte(CP_UTF8, 0U, src.data(), -1, dst.data(), static_cast<int>(dst.size()), nullptr, nullptr) == 0) {
 		throw std::system_error{ static_cast<int>(::GetLastError()),std::system_category() };
 	}
 
@@ -107,6 +106,23 @@ std::vector<daxie::tstring> daxie::TStringFunctions::split(const daxie::tstring&
 			offset = pos + separator_length;
 		}
 	}
+
+	return ret;
+}
+
+daxie::tstring daxie::TStringFunctions::get_string_in_between(const daxie::tstring& str, TCHAR c1, TCHAR c2) {
+	auto first_pos = str.find_first_of(c1);
+	auto last_pos = str.find_last_of(c2);
+
+	if (first_pos == std::string::npos || last_pos == std::string::npos) {
+		return str;
+	}
+	if (first_pos >= last_pos) {
+		return str;
+	}
+
+	daxie::tstring ret;
+	ret = str.substr(first_pos+1, last_pos - first_pos-1);
 
 	return ret;
 }

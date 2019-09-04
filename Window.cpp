@@ -65,6 +65,7 @@ LRESULT CALLBACK daxie::window::Window::WndProc(HWND hwnd, UINT msg, WPARAM wPar
 	switch (msg) {
 		HANDLE_MSG(hwnd, WM_CREATE, onCreate);
 		HANDLE_MSG(hwnd, WM_DESTROY, onDestroy);
+		HANDLE_MSG(hwnd, WM_CLOSE, onClose);
 		HANDLE_MSG(hwnd, WM_PAINT, onPaint);
 		HANDLE_MSG(hwnd, WM_SIZE, onSize);
 		HANDLE_MSG(hwnd, WM_TIMER, onTimer);
@@ -80,6 +81,7 @@ LRESULT CALLBACK daxie::window::Window::WndProc(HWND hwnd, UINT msg, WPARAM wPar
 		HANDLE_MSG(hwnd, WM_MBUTTONUP, onMButtonUp);
 		HANDLE_MSG(hwnd, WM_MOUSEMOVE, onMouseMove);
 		HANDLE_MSG(hwnd, WM_MOUSEWHEEL, onMouseWheel);
+		HANDLE_MSG(hwnd, WM_DROPFILES, onDropFiles);
 	}
 
 	return DefWindowProc(hwnd, msg, wParam, lParam);
@@ -96,6 +98,9 @@ BOOL daxie::window::Window::onCreate(HWND hwnd, LPCREATESTRUCT cs) {
 void daxie::window::Window::onDestroy(HWND hwnd) {
 	//PostQuitMessage(0);
 	window_destroyed_flag = true;
+}
+LRESULT daxie::window::Window::onClose(HWND hwnd) {
+	return DefWindowProc(hwnd, WM_CLOSE, 0, 0);
 }
 void daxie::window::Window::onPaint(HWND hwnd) {
 	PAINTSTRUCT ps;
@@ -138,6 +143,9 @@ void daxie::window::Window::onMouseMove(HWND hwnd, int x, int y, UINT key_flags)
 void daxie::window::Window::onMouseWheel(HWND hwnd, int x, int y, int z_delta, UINT fw_keys) {
 
 }
+void daxie::window::Window::onDropFiles(HWND hwnd, HDROP hdrop) {
+
+}
 
 void daxie::window::Window::DHSetWindowText(const daxie::tstring& text) {
 	SetWindowText(hwnd, text.c_str());
@@ -156,6 +164,10 @@ void daxie::window::Window::RemoveWindowStyle(LONG_PTR style) {
 void daxie::window::Window::DHMoveWindow(int x, int y, int width, int height) {
 	MoveWindow(hwnd, x, y, width, height, TRUE);
 }
+void daxie::window::Window::DHDragAcceptFiles(bool accept_flag) {
+	if (accept_flag == true)DragAcceptFiles(hwnd, TRUE);
+	else DragAcceptFiles(hwnd, FALSE);
+}
 
 daxie::tstring daxie::window::Window::DHGetWindowText() {
 	daxie::tstring text = daxie::tool::WindowTool::GetWindowTextTString(hwnd);
@@ -172,6 +184,16 @@ POINT daxie::window::Window::GetWindowPos() {
 	GetWindowRect(hwnd, &rect);
 	pt.x = rect.left;
 	pt.y = rect.top;
+
+	return pt;
+}
+POINT daxie::window::Window::GetWindowSize() {
+	RECT rect;
+	POINT pt;
+
+	GetClientRect(hwnd, &rect);
+	pt.x = rect.right;
+	pt.y = rect.bottom;
 
 	return pt;
 }
