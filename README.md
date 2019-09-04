@@ -1,6 +1,6 @@
 # WCCForWin32API
 
-WCCForWin32APIは、ウィンドウやコントロールを使いやすいようにクラスにまとめたものです。
+Win32APIを使用したGUIアプリケーションをより簡単に作成できるようにウィンドウやコントロールをクラス化したライブラリ(?)です。
 
 WCCはWindow and Control Classesの略です。
 
