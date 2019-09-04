@@ -1,6 +1,7 @@
 # WCCForWin32API
 
 WCCForWin32APIは、ウィンドウやコントロールを使いやすいようにクラスにまとめたものです。
+
 WCCはWindow and Control Classesの略です。
 
 # 概要
