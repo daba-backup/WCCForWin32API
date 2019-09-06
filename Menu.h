@@ -8,9 +8,6 @@ namespace daxie {
 		class Menu :public daxie::menu::MenuItem {
 			friend class MenuBar;
 
-		private:
-			HMENU hmenu;
-
 		public:
 			Menu(const daxie::tstring& text);
 			virtual ~Menu();

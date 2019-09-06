@@ -1,7 +1,7 @@
 #include"Menu.h"
 
 daxie::menu::Menu::Menu(const daxie::tstring& text) :MenuItem(text) {
-	hmenu = CreatePopupMenu();
+	this->hmenu = CreatePopupMenu();
 }
 daxie::menu::Menu::~Menu() {
 
@@ -31,6 +31,8 @@ void daxie::menu::Menu::Add(int index, std::unique_ptr<daxie::menu::MenuItem>& i
 	mii.wID = id;
 
 	InsertMenuItem(hmenu, index, TRUE, &mii);
+
+	item->hmenu = hmenu;
 }
 
 void daxie::menu::Menu::AddSeparator(int index) {
