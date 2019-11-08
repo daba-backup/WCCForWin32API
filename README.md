@@ -25,8 +25,3 @@ WCCForWin32APIを作成するにあたって、いくつかのサイトを参考
 - [Ｋ３ -計算技術研究会-](http://k3tec.net/neko_wiki/index.php?%A3%D7%A3%E9%A3%EE%A3%B3%A3%B2%A3%C1%A3%D0%A3%C9%B9%D6%BA%C212%B2%F3)
 - [MaryCore](https://marycore.jp/prog/cpp/std-string-split/)
 
-## 作者関連
-
-- [Twitter](https://twitter.com/Daxie_tksm6)
-  作者のTwitterアカウント
-
